@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Анкета</title>
+	<meta name="description" content="">
+
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-grid.min.css">
+
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/media.css">
+
+</head>
+
+<body>
+	
+	<div class="form-steps container">
+		<div class="row">
+			<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+				<ul class="btn-step">
+					<li class="btn-step-next">1</li>
+					<li class="btn-step-next">2</li>
+					<li class="btn-step-next">3</li>
+					<li class="btn-step-next">4</li>
+				</ul>
+			</div>
+		</div>
+		<form id="form" method="POST" action="">
+			<div class="step">
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 form-date">
+						<p class="step-name">1. Введите имя и e-mail</p>
+						<input id="name" name="name" type="text" placeholder="Имя" required>
+						<input id="email" name="email" class="first-step-input" type="email" placeholder="E-mail" required>
+						<span class="error"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+						<ul class="btn-nav">
+							<li class="btn-prev">Предыдущий</li>
+							<li id="btn" class="btn-next">Следующий</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="step">
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 form-date">
+						<p class="step-name">2. Выберите страну и город</p>
+						<input id="inputCountry" type="text" list="country" name="country" placeholder="Страна" required>
+						<datalist id="country"> 
+						</datalist>
+						<input id="inputCity" class="first-step-input" type="text" list="city" name="city" placeholder="Город" required>
+						<datalist id="city"> 
+						</datalist>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+						<ul class="btn-nav">
+							<li class="btn-prev">Предыдущий</li>
+							<li class="btn-next">Следующий</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="step">
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12 form-date">
+						<p class="step-name">3. Отметьте социальные сети</p>
+						<div class="social_block clearfix">
+							<div class="social__checkbox">
+								<input type="checkbox"><label for="">Facebook</label>
+								<input type="text" name="fb" placeholder="Ваша страница в Facebook">
+							</div>
+						</div>
+						<div class="social_block clearfix">
+							<div class="social__checkbox">
+								<input type="checkbox"><label for="">Вконтакте</label>
+								<input type="text" name="vk" placeholder="Ваша страница в Вконтакте">
+							</div>
+						</div>
+						<div class="social_block clearfix">
+							<div class="social__checkbox">
+								<input type="checkbox"><label for="">Twitter</label>
+								<input type="text" name="tw" placeholder="Ваша страница в Twitter">
+							</div>
+						</div>
+						<div class="social_block clearfix">
+							<div class="social__checkbox">
+								<input type="checkbox"><label for="">Одноклассники</label>
+								<input type="text" name="od" placeholder="Ваша страница в Одноклассники">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+						<ul class="btn-nav">
+							<li class="btn-prev">Предыдущий</li>
+							<li class="btn-next">Следующий</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="step">
+				<div class="form-date">
+					<div class="row">
+						<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+							<p class="step-name">4. Выберите любимого котика</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+							<div class="img_block clearfix">
+								<img src="img/cat1.jpg" alt="">
+								<img src="img/cat2.jpg" alt="">
+								<img src="img/cat3.jpg" alt="">
+								<img src="img/dog4.jpg" alt="">
+							</div>	
+							<p class="choice-dog">Вы выбрали собачку. А надо котика.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+						<ul class="btn-nav">
+							<li class="btn-prev">Предыдущий</li>
+							<li class="btn-finish">Завершить</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="show-result">
+		<div class="form-result clearfix">
+			<div class="form-result_left">
+				<p class="name"></p>
+				<p class="email"></p>
+				<p class="location"><span class="city"></span>, <span class="country"></span></p>
+				<p class="social-link">Facebook:<span class="fb"></span></p>
+				<p class="social-link">Вконтакте:<span class="vk"></span></p>
+				<p class="social-link">Twitter:<span class="tw"></span></p>
+				<p class="social-link">Одноклассники:<span class="od"></span></p>
+			</div>
+			<div class="form-result_right">
+				<img src="" alt="">
+			</div>
+		</div>
+		<a href="" class="btn-reset">Пройти заново</a>
+	</div>
+
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+
+	<script src="libs/jquery/jquery-1.11.2.min.js"></script>
+	<script src="js/common.js"></script>
+	
+</body>
+</html>
