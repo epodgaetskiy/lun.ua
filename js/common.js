@@ -5,19 +5,17 @@ var step = $(".step");
 	btnFinish = $(".btn-finish");
 	btnReset = $(".btn-reset");
 	sourceDate = {}; 
+	FormInfo = ['name', 'email', 'country', 'city', 'fb', 'vk', 'tw', 'od'];
 //view first step
 step.eq(0).addClass("active");
 stepBtn.eq(0).addClass("active");
 //date for form
-sourceDate.Step  = function (name, email, country, city, fb, vk, tw, od){
-	this.name = name;
-	this.email = email;
-	this.country = country;
-	this.city = city;
-	this.fb = fb;
-	this.vk = vk;
-	this.tw = tw;
-	this.od = od;
+sourceDate.Step  = function (result){
+
+	for (var i = 0; i < FormInfo.length; i++) {
+		this[FormInfo[i]] = result[FormInfo[i]];
+	}
+	
 }
 
 //load list country and cities
@@ -125,8 +123,9 @@ btnNext.each( function() {
 			step.removeClass("active");
 			step.eq(i).addClass("active");
 			stepBtn.removeClass("active");
-			stepBtn.eq(i).addClass("finished");
-			stepBtn.eq(i).addClass("active");
+			stepBtn.eq(i)
+				.addClass("finished")
+				.addClass("active");
 
 			if (i == 3) {
 				stepBtn.eq(i).addClass("finished");
@@ -190,8 +189,9 @@ btnReset.click(function(e){
 	e.preventDefault();
 
 	step.removeClass("active");
-	stepBtn.removeClass("active");
-	stepBtn.removeClass("finished");
+	stepBtn
+		.removeClass("active")
+		.removeClass("finished");
 	step.eq(0).addClass("active");
 	stepBtn.eq(0).addClass("active");
 
@@ -204,17 +204,17 @@ btnReset.click(function(e){
 
 	imgStep.removeClass("active");
 	//delete date form
-	sourceDate.Step("", "", "", "", "", "", "", "");
+	sourceDate.Step("");
 	sourceDate.img= "";
-	//delete sicial date
-	$(".fb").text("");
-	$(".fb").parent().removeClass("show-social");
-	$(".vk").text("");
-	$(".vk").parent().removeClass("show-social");
-	$(".tw").text("");
-	$(".tw").parent().removeClass("show-social");
-	$(".od").text("");
-	$(".od").parent().removeClass("show-social");
+	//delete social date
+
+	for (var i = 4; i < FormInfo.length; i++) {
+
+		$('.' + FormInfo[i]).text("");
+		$('.' + FormInfo[i]).parent().removeClass("show-social");
+
+	}
+	
 	$(".form-steps").removeClass("hide-block");
 	$(".show-result").removeClass("show-active");
 
@@ -228,7 +228,7 @@ function sendAjaxForm(url) {
         data: jQuery("#form").serialize(), 
         success: function(response) { 
         	result = jQuery.parseJSON(response);
-        	sourceDate.Step(result.name, result.email, result.country, result.city, result.fb, result.vk, result.tw, result.od);
+        	sourceDate.Step(result);
     	},
     	error: function(response) { 
     	}
@@ -301,29 +301,17 @@ function showCities(cities) {
 }
 //write date to show-result
 function showResult(date) {
-	$(".name").text(date.name);
-	$(".email").text(date.email);
-	$(".city").text(date.city);
-	$(".country").text(date.country);
 
-	if (date.fb != '') {
-		$(".fb").parent().addClass("show-social");
-		$(".fb").text(date.fb);
-	}
-
-	if (date.vk != '') {
-		$(".vk").parent().addClass("show-social");
-		$(".vk").text(date.vk);
-	}
-
-	if (date.tw != '') {
-		$(".tw").parent().addClass("show-social");
-		$(".tw").text(date.tw);
-	}
-
-	if (date.od != '') {
-		$(".od").parent().addClass("show-social");
-		$(".od").text(date.od);
+	for (var i = 0; i < FormInfo.length; i++) {
+		if (i < 4) {
+			$('.' + FormInfo[i]).text(date[FormInfo[i]]);
+		} else {
+			if (date[FormInfo[i]] !== '') {
+				$('.' + FormInfo[i]).parent().addClass("show-social");
+				$('.' + FormInfo[i]).text(date[FormInfo[i]]);
+			}
+		}
+		
 	}
 
 	$(".form-result img").attr("src", date.img);
